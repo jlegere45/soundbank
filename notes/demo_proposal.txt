@@ -1,0 +1,42 @@
+SOUNDBANK(name in progress) DEMO PROPOSAL
+	The main idea for SOUNDBANK(name in progress) is to let users and content creators connect and share exclusive
+	content on one platform. Content creators, primarily musicians, can share their content choosing which content is free and which is premium.
+	Users in turn will be able to follow their favorite creators with either a free or premium subscription. The payments go directly
+	from user to creator. This is an opportunity for musicians to reach their followers directly instead of relying on a streaming service.
+	Using conservative estimates from spotify a musician would need to have their music streamed 100000 times to make 400 USD. With a
+	subscription based model for their content they could make the same amount of money with 100 followers paying a little over 4 dollars
+	a month.
+
+	The primary task going forward is to complete a working demo. After a demo is completing then the next 
+	steps can be explored: beta testing, a deliverable product. The demo must have these features and characteristics:
+		1. Allow new content creators to make an account
+		2. Allow content creators to upload audio files in any standard or high quality format
+		3. Allow content creators to choose which content is free or premium
+		4. Allow content creators to make edits to specific audio files in the following ways
+			* cut, copy, paste and delete sections of audio tracks
+			* overlay audio tracks
+			* change volume of audio tracks
+			* change pitch of audio tracks
+			* add a handful of audio effects, amplify, reverb, echo
+			* remove background noise
+			* compress all tracks into one file
+		5. Allow users to find content creators they want to or would enjoy
+		6. Allow users to subscribe for a monthly or annual cost to their favorite content creator
+		7. All features accessed via a website
+
+	
+	The most difficult and time consuming portion of this demo will be the portion of the application that
+	allows for audio file editing. For development I propose that we focus on the backend portion of this
+ 	application and when that is done we either create the frontend or hire someone to do it. This can be 
+	completed in any number of languages, python, node, c/c++, etc... all have libraries for audio editing.
+	I think moving forward with python is a smart choice because of all three members of our group who code
+	Me(Eli) Austin, and Connor(?) it's the language we all know and probably know the best.
+
+	In fact the entire backend can be written in python and we can have node wrappers which call backend api.
+	As opposed to having a python server and a node server make api calls to that server. This eliminates some
+	overhead and simplifies the development workflow.
+
+	Features 1-3,5-6 should be completed first and quickly. The tasks are not that difficult and for the demo
+	We don't need to think about scale, creating a users database can be done on local machines. Demo audio files
+	can be stored and retrieved using aws s3 buckets, until a more appropriate cdn service is used. If we decide to move
+	forward with SOUNDBANK(name in progress) the list of features can be broken down into subtasks.

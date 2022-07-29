@@ -1,0 +1,23 @@
+    Creating an account is really composed of two parts, creating an account i.e. providing enough 
+    information to fill out an entry in our database, and then once a valid entry is created, letting a user  
+    with the proper login credentials sign into their account and access all of their own data.
+
+    There are two types of users, content creators and listeners. A content creator is also a listener but not
+    the other way around. That is to say that a content creator can also follow other artists. A listener can 
+    set up their account to upload content after filling out form on a webpage.
+
+    The database schema for a user
+        id: incrementing integers
+        name: string 
+        email: string 
+        password: salted and hashed string
+        session_token: uuid for the user's current session
+        content_name: string
+        content_url: string
+        content_about: string
+
+    Only content creators will need the fields starting with 'content_' Otherwise they will just be null/empty string
+
+
+    
+    NOTE: We also need to provide the ability to delete accounts, but that will come after the demo.
