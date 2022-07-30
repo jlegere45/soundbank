@@ -1,3 +1,6 @@
+wheel
 requests
 python-dotenv
 pytest
+pyflac
+psycopg2-binary
