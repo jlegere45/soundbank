@@ -8,10 +8,11 @@
 
     The database schema for a user
         id: incrementing integers
-        name: string 
+        username: string 
         email: string 
         password: salted and hashed string
         session_token: uuid for the user's current session
+        registered: boolean
         content_name: string
         content_url: string
         content_about: string
