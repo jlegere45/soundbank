@@ -2,7 +2,7 @@ import pytest
 from src.database import users
 
 def test_insert_user(username1, email1):
-    result = users.insert_user(username1, email1)
+    result = users.insert_user(username1, email1, "password")
     assert result[0] > 1
     assert result[1] == username1
     assert result[2] == email1

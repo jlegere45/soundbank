@@ -20,7 +20,7 @@ def email2():
 
 @pytest.fixture
 def test_user(username2, email2):
-    result = users.insert_user(username2, email2)
+    result = users.insert_user(username2, email2, "password")
     yield result[0]
     users.delete_user(id=result[0])
 

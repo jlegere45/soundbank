@@ -1,5 +1,8 @@
 """user_table actions this is just a small collection of functions
    caller needs to handle errors"""
+import base64
+import hashlib
+import bcrypt
 from src.database.db_connect import setup_connection
 
 conn, curr = setup_connection()
@@ -19,9 +22,13 @@ def insert_user(username, email, password, content_name="", content_url="",
     Returns:
         tuple: (id, username, email)
     """
-    curr.execute("INSERT INTO users_table (username, email, registered, password) \
-                 VALUES (%s, %s, %s, %s) RETURNING id, username, email",
-                (username, email, False, password))
+    salt = bcrypt.gensalt()
+    password = base64.b64decode(password)
+    hashlib_pw = base64.b64encode(hashlib.sha256(password).digest())
+    bcrypt_pw = bcrypt.hashpw(hashlib_pw, salt)
+    curr.execute("INSERT INTO users_table (username, email, registered, password, salt) \
+                 VALUES (%s, %s, %s, %s, %s) RETURNING id, username, email",
+                (username, email, False, bcrypt_pw, salt))
     result = curr.fetchone()
     conn.commit()
     if len(content_name) > 1:
