@@ -4,13 +4,30 @@ from src.database.db_connect import setup_connection
 
 conn, curr = setup_connection()
 
-def insert_user(username, email, content_name=None, content_url=None,
-                content_about=None):
-    curr.execute("INSERT INTO users_table (username, email, registered) \
-                 VALUES (%s, %s, %s) RETURNING id, username, email",
-                (username, email, False))
+def insert_user(username, email, password, content_name="", content_url="",
+                content_about=""):
+    """_summary_
+
+    Args:
+        username (string)
+        email (string)
+        password (string)
+        content_name (string, optional). Defaults to empty string.
+        content_url (string, optional). Defaults to empty string.
+        content_about (string, optional). Defaults to empty string.
+
+    Returns:
+        tuple: (id, username, email)
+    """
+    curr.execute("INSERT INTO users_table (username, email, registered, password) \
+                 VALUES (%s, %s, %s, %s) RETURNING id, username, email",
+                (username, email, False, password))
     result = curr.fetchone()
     conn.commit()
+    if len(content_name) > 1:
+        curr.execute("UPDATE users_table SET content_name=%s, content_about=%s, content_url=%s \
+                VALUES (%s, %s, %s) RETURNING id, username, email",
+            (username, email, False, password))
     return result
 
 

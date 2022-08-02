@@ -22,3 +22,10 @@
 
     
     NOTE: We also need to provide the ability to delete accounts, but that will come after the demo.
+
+    TODO:
+            (Completed) Insert/get/delete users from database
+            Verify emails
+            Set user as content creator
+            Create session_tokens
+
